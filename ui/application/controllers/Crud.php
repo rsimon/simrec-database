@@ -16,6 +16,7 @@ class Crud extends CI_Controller {
 	public function routes() {
 		$crud = new grocery_CRUD();
 		$crud->set_table('route');
+		$crud->set_relation('route_type','route_type','id');
 
 		$output = $crud->render();
 		$data['title'] = 'Routes';
@@ -49,6 +50,7 @@ class Crud extends CI_Controller {
 	public function named_routes() {
 		$crud = new grocery_CRUD();
 		$crud->set_table('named_route');
+		$crud->set_relation_n_n('has_routes', 'route_is_part_of', 'route', 'named_route_id', 'route_id', 'id');
 
 		$output = $crud->render();
 		$data['title'] = 'Named Routes';
