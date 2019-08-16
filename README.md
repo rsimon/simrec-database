@@ -27,3 +27,8 @@ to follow. In the mean time:
   - named_route.name
 - Turns out some tables currently don't work because GroceryCRUD simply doesn't support compound primary keys. Needs
   a few changes to the schema to fix  this.
+
+## Key Todos
+
+- Sort out identifier issue & revise DB init script accordingly
+- Eliminate compound primary keys, so we can use GroceryCRUD (and revise DB init script accordingly)
