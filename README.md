@@ -9,7 +9,7 @@ to follow. In the mean time:
 
 - Configure DB settings in `ui/application/config/database.php` (username, password, DB name)
 - Run `php -S localhost:8000 -t ui` to start dev mode.
-- Go to [http://localhost:8080/index.php/main/route](http://localhost:8080/index.php/main/route)
+- Go to [http://localhost:8080/ui](http://localhost:8080/ui)
 
 ## Open Questions/Notes
 

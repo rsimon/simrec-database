@@ -15,8 +15,37 @@
 
     <style type='text/css'>
       body {
-        font-family: Arial;
-        font-size: 14px;
+        font-family:Arial;
+        font-size:14px;
+        padding:0;
+        margin:0;
+      }
+
+      .header {
+        border-color:#5385c1;
+        border-style:solid;
+        border-width:8px 0 3px 0;
+        padding:0;
+        color:#5385c1;
+        font-size:22px;
+        font-weight:bold;
+      }
+
+      .header ul {
+        list-style-type:none;
+        padding:0;
+        margin:0;
+        padding:0 20px;
+        border-bottom:2px solid #5385c1;
+      }
+
+      .header li {
+        display:inline-block;
+        padding:10px;
+      }
+
+      .header .title {
+        padding:20px 30px 30px 30px;
       }
 
       a {
@@ -31,23 +60,21 @@
     </style>
   </head>
   <body>
-    <div>
+    <div class="header">
+      <ul class="menu">
+        <li><a href='<?php echo site_url('crud/routes')?>'>Routes</a></li>
+        <li><a href='<?php echo site_url('crud/places')?>'>Places</a></li>
+        <li><a href='<?php echo site_url('crud/network')?>'>Network</a></li>
+        <li><a href='<?php echo site_url('crud/named_routes')?>'>Named Routes</a></li>
+        <li><a href='<?php echo site_url('crud/bibliography')?>'>Bibliography</a></li>
+        <li><a href='<?php echo site_url('crud/route-types')?>'>Route Types</a></li>
+      </ul>
 
-        <!--
-        <a href='<?php echo site_url('examples/offices_management')?>'>Offices</a> | 
-        <a href='<?php echo site_url('examples/employees_management')?>'>Employees</a> |
-        <a href='<?php echo site_url('examples/customers_management')?>'>Customers</a> |
-        <a href='<?php echo site_url('examples/orders_management')?>'>Orders</a> |
-        <a href='<?php echo site_url('examples/products_management')?>'>Products</a> | 
-        <a href='<?php echo site_url('examples/film_management')?>'>Films</a>
-        -->
+      <div class="title"><?php echo $data['title'] ?></div>
     </div>
 
-    <div style='height:20px;'></div>  
-    <div>
+    <div class="content">
         <?php echo $output; ?> 
     </div>
-    
-    <div>Footer</div>
   </body>
 </html>
