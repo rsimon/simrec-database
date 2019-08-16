@@ -37,6 +37,7 @@
         margin:0;
         padding:0 20px;
         border-bottom:2px solid #5385c1;
+        background-color:rgba(83, 133, 193, 0.15);
       }
 
       .header li {
@@ -45,11 +46,11 @@
       }
 
       .header .title {
-        padding:20px 30px 30px 30px;
+        padding:30px;
       }
 
       a {
-        color: blue;
+        color:#5385c1;
         text-decoration: none;
         font-size: 14px;
       }
@@ -67,7 +68,7 @@
         <li><a href='<?php echo site_url('crud/network')?>'>Network</a></li>
         <li><a href='<?php echo site_url('crud/named_routes')?>'>Named Routes</a></li>
         <li><a href='<?php echo site_url('crud/bibliography')?>'>Bibliography</a></li>
-        <li><a href='<?php echo site_url('crud/route-types')?>'>Route Types</a></li>
+        <li><a href='<?php echo site_url('crud/route_types')?>'>Route Types</a></li>
       </ul>
 
       <div class="title"><?php echo $data['title'] ?></div>

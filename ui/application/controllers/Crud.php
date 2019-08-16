@@ -3,26 +3,77 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Crud extends CI_Controller {
 
-	function __construct()
-	{
+	function __construct() {
 	  parent::__construct();
-
 		$this->load->database();
 		$this->load->library('grocery_CRUD');
 	}
 
-	public function index()
-	{
+	public function index() {
 		$this->load->view('welcome_message');
 	}
 
-	public function route()
-	{
+	public function routes() {
 		$crud = new grocery_CRUD();
 		$crud->set_table('route');
 
 		$output = $crud->render();
 		$data['title'] = 'Routes';
+		$output->data = $data;
+
+		$this->load->view('crud_template.php', $output);
+	}
+
+	public function places() {
+		$crud = new grocery_CRUD();
+		$crud->set_table('place');
+
+		$output = $crud->render();
+		$data['title'] = 'Places';
+		$output->data = $data;
+
+		$this->load->view('crud_template.php', $output);
+	}
+
+	public function network() {
+		$crud = new grocery_CRUD();
+		$crud->set_table('network_edge');
+
+		$output = $crud->render();
+		$data['title'] = 'Network';
+		$output->data = $data;
+
+		$this->load->view('crud_template.php', $output);
+	}
+
+	public function named_routes() {
+		$crud = new grocery_CRUD();
+		$crud->set_table('named_route');
+
+		$output = $crud->render();
+		$data['title'] = 'Named Routes';
+		$output->data = $data;
+
+		$this->load->view('crud_template.php', $output);
+	}
+
+	public function bibliography() {
+		$crud = new grocery_CRUD();
+		$crud->set_table('bibliography');
+
+		$output = $crud->render();
+		$data['title'] = 'Bibliography';
+		$output->data = $data;
+
+		$this->load->view('crud_template.php', $output);
+	}
+
+	public function route_types() {
+		$crud = new grocery_CRUD();
+		$crud->set_table('route_type');
+
+		$output = $crud->render();
+		$data['title'] = 'Route Types';
 		$output->data = $data;
 
 		$this->load->view('crud_template.php', $output);
