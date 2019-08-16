@@ -39,6 +39,8 @@ class Crud extends CI_Controller {
 	public function network() {
 		$crud = new grocery_CRUD();
 		$crud->set_table('network_edge');
+		$crud->set_relation('from_plae','place','name');
+		$crud->set_relation('to_place','place','name');
 
 		$output = $crud->render();
 		$data['title'] = 'Network';
