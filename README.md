@@ -25,3 +25,5 @@ to follow. In the mean time:
   - route.route_type?
   - place.name
   - named_route.name
+- Turns out some tables currently don't work because GroceryCRUD simply doesn't support compound primary keys. Needs
+  a few changes to the schema to fix  this.
