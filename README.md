@@ -2,6 +2,15 @@
 
 Data entry webapp for the SIMREC project. Work in progress.
 
+# UI
+
+The initial UI will be based on [GroceryCRUD](https://www.grocerycrud.com/). Documentation
+to follow. In the mean time:
+
+- Configure DB settings in `ui/application/config/database.php` (username, password, DB name)
+- Run `php -S localhost:8000 -t ui` to start dev mode.
+- Go to [http://localhost:8080/index.php/main/route](http://localhost:8080/index.php/main/route)
+
 ## Open Questions/Notes
 
 - What should we use as identifier for routes, etc.? Are UUIDs acceptable? (Would simplify things a lot, especially
