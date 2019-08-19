@@ -30,5 +30,6 @@ to follow. In the mean time:
 
 ## Key Todos
 
-- Sort out identifier issue & revise DB init script accordingly
-- Eliminate compound primary keys, so we can use GroceryCRUD (and revise DB init script accordingly)
+- [ ] Sort out identifier issue & revise DB init script accordingly
+- [x] Eliminate compound primary keys, so we can use GroceryCRUD (and revise DB init script accordingly)
+- [ ] Bugfix: GroceryCRUD can't handle URIs as primary keys (places...)
