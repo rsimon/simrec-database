@@ -24,11 +24,12 @@
       .header {
         border-color:#5385c1;
         border-style:solid;
-        border-width:8px 0 3px 0;
+        border-width:8px 0 0 0;
         padding:0;
         color:#5385c1;
         font-size:22px;
         font-weight:bold;
+        box-shadow:0 1px 12px rgba(0,0,0,0.3);
       }
 
       .header ul {
@@ -47,6 +48,16 @@
 
       .header .title {
         padding:30px;
+        background-color:#5385c1;
+        color:#fff;
+      }
+
+      .content {
+        padding:30px;
+      }
+
+      .content > div {
+        box-shadow:0 0 12px rgba(0, 0, 0, 0.15);
       }
 
       a {
