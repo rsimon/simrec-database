@@ -28,3 +28,4 @@ clone the repository and:
   - place.name
   - named_route.name
 - [x] GroceryCRUD does not support compound primary keys. Redesign the schema to get rid of them.
+- [ ] We need some kind of basic auth
