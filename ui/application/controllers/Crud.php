@@ -16,7 +16,8 @@ class Crud extends CI_Controller {
 	public function routes() {
 		$crud = new grocery_CRUD();
 		$crud->set_table('route');
-		$crud->set_relation('route_type','route_type','id');
+		$crud->set_relation('route_type', 'route_type', 'id');
+		$crud->set_relation_n_n('cites', 'bibliographic_citation', 'bibliography', 'route_id', 'bibliography_id', 'bibtex');
 
 		$output = $crud->render();
 		$data['title'] = 'Routes';
@@ -39,8 +40,9 @@ class Crud extends CI_Controller {
 	public function network() {
 		$crud = new grocery_CRUD();
 		$crud->set_table('network_edge');
-		$crud->set_relation('from_plae','place','name');
-		$crud->set_relation('to_place','place','name');
+		$crud->set_relation('route_id', 'route', 'id');
+		$crud->set_relation('from_place', 'place', 'name');
+		$crud->set_relation('to_place', 'place', 'name');
 
 		$output = $crud->render();
 		$data['title'] = 'Network';
@@ -52,7 +54,7 @@ class Crud extends CI_Controller {
 	public function named_routes() {
 		$crud = new grocery_CRUD();
 		$crud->set_table('named_route');
-		$crud->set_relation_n_n('has_routes', 'route_is_part_of', 'route', 'named_route_id', 'route_id', 'id');
+		$crud->set_relation_n_n('has_routes', 'route_is_part_of', 'route', 'named_route_id', 'route_id', 'description');
 
 		$output = $crud->render();
 		$data['title'] = 'Named Routes';

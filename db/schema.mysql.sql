@@ -49,9 +49,10 @@ CREATE TABLE named_route (
 
 -- associates routes with named routes
 CREATE TABLE route_is_part_of (
+  id SERIAL PRIMARY KEY,
   route_id VARCHAR(255) NOT NULL,
   named_route_id VARCHAR(255) NOT NULL,
-  PRIMARY KEY(route_id, named_route_id),
+  UNIQUE KEY idx_is_part_of (route_id, named_route_id),
   FOREIGN KEY(route_id) REFERENCES route(id),
   FOREIGN KEY(named_route_id) REFERENCES named_route(id)
 ) DEFAULT CHARSET=utf8;
@@ -64,9 +65,10 @@ CREATE TABLE bibliography (
 
 -- routes cite entries in the bibliography
 CREATE TABLE bibliographic_citation (
+  id SERIAL PRIMARY KEY,
   route_id VARCHAR(255) NOT NULL,
   bibliography_id BIGINT UNSIGNED NOT NULL,
-  PRIMARY KEY(route_id, bibliography_id),
+  UNIQUE KEY idx_bibliographic_citation (route_id, bibliography_id),
   FOREIGN KEY(route_id) REFERENCES route(id),
   FOREIGN KEY(bibliography_id) REFERENCES bibliography(id)
 ) DEFAULT CHARSET=utf8;
