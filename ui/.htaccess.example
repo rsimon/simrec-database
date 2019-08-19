@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "SIMREC Data Entry GUI"
+AuthUserFile /var/www/.htpasswd
+Require valid-user
