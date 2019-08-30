@@ -24,7 +24,7 @@ CREATE TABLE route (
 -- place model
 CREATE TABLE place (
   gazetteer_uri VARCHAR(1024) NOT NULL PRIMARY KEY, 
-  name VARCHAR(1024), -- NOT NULL?
+  name VARCHAR(1024) NOT NULL,
   notes TEXT
 ) DEFAULT CHARSET=utf8;
 
@@ -43,7 +43,7 @@ CREATE TABLE network_edge (
 -- named route, made up of many route instances
 CREATE TABLE named_route (
   id VARCHAR(255) NOT NULL PRIMARY KEY, -- random string/number?
-  name VARCHAR(1024),
+  name VARCHAR(1024) NOT NULL,
   notes TEXT
 ) DEFAULT CHARSET=utf8;
 

@@ -20,8 +20,8 @@ clone the repository and:
 - [ ] I renamed column names such as `pleiades_uri` to `gazetteer_uri`. Ok? Or keep Pleiades?
 - [ ] In the diagram, there are two n-to-m association tables between places and routes, one "direct" and one for the 
   network. What's the purpose behind this separation/duplication? Can the two tables contain different information?
-- [ ] Should __place.name__ have a NOT NULL constraint? (Generally, places _could_ be unnamed...)
-- [ ] Likewise, should __named_route.name__ be NOT NULL?
+- [x] Should __place.name__ have a NOT NULL constraint? (Generally, places _could_ be unnamed...)
+- [x] Likewise, should __named_route.name__ be NOT NULL?
 - [ ] Where in the schema should we define indices? (I assume it won't make much difference due to DB size, but still.)
   - route.lower_date, route.upper_date?
   - route.route_type?
