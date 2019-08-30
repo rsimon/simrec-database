@@ -53,8 +53,8 @@ CREATE TABLE route_is_part_of (
   route_id VARCHAR(255) NOT NULL,
   named_route_id VARCHAR(255) NOT NULL,
   UNIQUE KEY idx_is_part_of (route_id, named_route_id),
-  FOREIGN KEY(route_id) REFERENCES route(id),
-  FOREIGN KEY(named_route_id) REFERENCES named_route(id)
+  FOREIGN KEY(route_id) REFERENCES route(id) ON DELETE CASCADE,
+  FOREIGN KEY(named_route_id) REFERENCES named_route(id) ON DELETE CASCADE
 ) DEFAULT CHARSET=utf8;
 
 -- bibliography entry
