@@ -29,3 +29,5 @@ clone the repository and:
   - ~~named_route.name~~
 - [x] GroceryCRUD does not support compound primary keys. Redesign the schema to get rid of them.
 - [x] We need some kind of basic auth
+- [ ] Looks like it's currently not possible to delete a route that is part of a named route
+- [ ] BibTex bibliography: can we make this searchable in the GroceryCRUD dropdown?
