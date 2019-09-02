@@ -15,7 +15,7 @@ clone the repository and:
 
 - [x] What should we use as identifiers for __routes__, __network edges__ and __named routes__? I'm not a fan of 
   auto-generated serial integers. UUIDs? Random alphanumeric strings?
-- [ ] GroceryCRUD has problems with using URIs as unique IDs (relevant for __places__). What to use instead? (A 
+- [x] GroceryCRUD has problems with using URIs as unique IDs (relevant for __places__). What to use instead? (A 
   slug based on gazetteer URI?)
 - [x] I renamed column names such as `pleiades_uri` to `gazetteer_uri`. Ok? Or keep Pleiades?
 - [ ] In the diagram, there are two n-to-m association tables between places and routes, one "direct" and one for the 
