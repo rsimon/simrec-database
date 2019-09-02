@@ -74,3 +74,15 @@ CREATE TABLE bibliographic_citation (
   FOREIGN KEY(route_id) REFERENCES route(id) ON DELETE CASCADE,
   FOREIGN KEY(bibliography_id) REFERENCES bibliography(id) ON DELETE CASCADE
 ) DEFAULT CHARSET=utf8;
+
+-- view for easily getting all places on a route
+CREATE VIEW place_is_part_of AS
+  SELECT
+    route_id,
+    internal_place_id,
+    gazetteer_uri,
+    name AS place_name
+  FROM network_edge 
+  JOIN place ON place.internal_place_id = network_edge.from_place 
+    OR place.internal_place_id = network_edge.to_place 
+  GROUP BY route_id, internal_place_id, gazetteer_uri, name;
