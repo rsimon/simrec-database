@@ -21,6 +21,7 @@ class Crud extends CI_Controller {
 		$crud->set_relation('route_type', 'route_type', 'id');
 		$crud->set_relation_n_n('cites', 'bibliographic_citation', 'bibliography', 'route_id', 'bibliography_id', 'bibtex');
 		$crud->field_type('id', 'hidden', $id);
+		$crud->unset_texteditor('geom_kml', 'description', 'citation');
 
 		$output = $crud->render();
 		$data['title'] = 'Routes';
@@ -30,8 +31,12 @@ class Crud extends CI_Controller {
 	}
 
 	public function places() {
+		$internal_id = uniqid($more_entropy = true);
+
 		$crud = new grocery_CRUD();
 		$crud->set_table('place');
+		$crud->field_type('internal_place_id', 'hidden', $internal_id);
+		$crud->unset_texteditor('notes');
 
 		$output = $crud->render();
 		$data['title'] = 'Places';
@@ -49,6 +54,7 @@ class Crud extends CI_Controller {
 		$crud->set_relation('from_place', 'place', 'name');
 		$crud->set_relation('to_place', 'place', 'name');
 		$crud->field_type('id', 'hidden', $id);
+		$crud->unset_texteditor('notes');
 
 		$output = $crud->render();
 		$data['title'] = 'Network';
@@ -64,6 +70,7 @@ class Crud extends CI_Controller {
 		$crud->set_table('named_route');
 		$crud->set_relation_n_n('has_routes', 'route_is_part_of', 'route', 'named_route_id', 'route_id', 'description');
 		$crud->field_type('id', 'hidden', $id);
+		$crud->unset_texteditor('notes');
 
 		$output = $crud->render();
 		$data['title'] = 'Named Routes';
@@ -75,6 +82,7 @@ class Crud extends CI_Controller {
 	public function bibliography() {
 		$crud = new grocery_CRUD();
 		$crud->set_table('bibliography');
+		$crud->unset_texteditor('bibtex');
 
 		$output = $crud->render();
 		$data['title'] = 'Bibliography';

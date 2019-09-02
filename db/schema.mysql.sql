@@ -23,7 +23,8 @@ CREATE TABLE route (
 
 -- place model
 CREATE TABLE place (
-  gazetteer_uri VARCHAR(1024) NOT NULL PRIMARY KEY, 
+  internal_place_id VARCHAR(255) NOT NULL PRIMARY KEY,
+  gazetteer_uri VARCHAR(1024) NOT NULL, 
   name VARCHAR(1024) NOT NULL,
   notes TEXT
 ) DEFAULT CHARSET=utf8;
@@ -36,8 +37,8 @@ CREATE TABLE network_edge (
   to_place VARCHAR(1024),
   notes TEXT,
   FOREIGN KEY(route_id) REFERENCES route(id) ON DELETE CASCADE,
-  FOREIGN KEY(from_place) REFERENCES place(gazetteer_uri) ON DELETE CASCADE,
-  FOREIGN KEY(to_place) REFERENCES place(gazetteer_uri) ON DELETE CASCADE
+  FOREIGN KEY(from_place) REFERENCES place(internal_place_id) ON DELETE CASCADE,
+  FOREIGN KEY(to_place) REFERENCES place(internal_place_id) ON DELETE CASCADE
 ) DEFAULT CHARSET=utf8;
 
 -- named route, made up of many route instances
