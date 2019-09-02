@@ -24,7 +24,7 @@ CREATE TABLE route (
 -- place model
 CREATE TABLE place (
   internal_place_id VARCHAR(255) NOT NULL PRIMARY KEY,
-  gazetteer_uri VARCHAR(1024) NOT NULL, 
+  gazetteer_uri VARCHAR(1024) NOT NULL UNIQUE, 
   name VARCHAR(1024) NOT NULL,
   notes TEXT
 ) DEFAULT CHARSET=utf8;
