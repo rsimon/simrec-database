@@ -13,7 +13,7 @@ clone the repository and:
 
 ## TODOs  & Questions
 
-- [ ] What should we use as identifiers for __routes__, __network edges__ and __named routes__? I'm not a fan of 
+- [x] What should we use as identifiers for __routes__, __network edges__ and __named routes__? I'm not a fan of 
   auto-generated serial integers. UUIDs? Random alphanumeric strings?
 - [ ] GroceryCRUD has problems with using URIs as unique IDs (relevant for __places__). What to use instead? (A 
   slug based on gazetteer URI?)

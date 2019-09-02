@@ -9,7 +9,7 @@ INSERT INTO route_type (id) VALUES ('TERTIARY');
 
 -- route model
 CREATE TABLE route (
-  id VARCHAR(255) NOT NULL PRIMARY KEY, -- random string/number?
+  id VARCHAR(255) NOT NULL PRIMARY KEY,
   lower_date INTEGER,
   lower_date_error INTEGER,
   upper_date INTEGER,
@@ -30,7 +30,7 @@ CREATE TABLE place (
 
 -- network model
 CREATE TABLE network_edge (
-  id VARCHAR(255) NOT NULL PRIMARY KEY, -- random string/number?
+  id VARCHAR(255) NOT NULL PRIMARY KEY,
   route_id VARCHAR(255) NOT NULL,
   from_place VARCHAR(1024) NOT NULL,
   to_place VARCHAR(1024),
@@ -42,7 +42,7 @@ CREATE TABLE network_edge (
 
 -- named route, made up of many route instances
 CREATE TABLE named_route (
-  id VARCHAR(255) NOT NULL PRIMARY KEY, -- random string/number?
+  id VARCHAR(255) NOT NULL PRIMARY KEY,
   name VARCHAR(1024) NOT NULL,
   notes TEXT
 ) DEFAULT CHARSET=utf8;

@@ -41,11 +41,14 @@ class Crud extends CI_Controller {
 	}
 
 	public function network() {
+		$id = uniqid($more_entropy = true);
+
 		$crud = new grocery_CRUD();
 		$crud->set_table('network_edge');
 		$crud->set_relation('route_id', 'route', 'id');
 		$crud->set_relation('from_place', 'place', 'name');
 		$crud->set_relation('to_place', 'place', 'name');
+		$crud->field_type('id', 'hidden', $id);
 
 		$output = $crud->render();
 		$data['title'] = 'Network';
@@ -55,9 +58,12 @@ class Crud extends CI_Controller {
 	}
 
 	public function named_routes() {
+		$id = uniqid($more_entropy = true);
+		
 		$crud = new grocery_CRUD();
 		$crud->set_table('named_route');
 		$crud->set_relation_n_n('has_routes', 'route_is_part_of', 'route', 'named_route_id', 'route_id', 'description');
+		$crud->field_type('id', 'hidden', $id);
 
 		$output = $crud->render();
 		$data['title'] = 'Named Routes';
