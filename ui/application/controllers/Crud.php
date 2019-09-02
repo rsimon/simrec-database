@@ -19,7 +19,7 @@ class Crud extends CI_Controller {
 		$crud = new grocery_CRUD();
 		$crud->set_table('route');
 		$crud->set_relation('route_type', 'route_type', 'id');
-		$crud->set_relation_n_n('cites', 'bibliographic_citation', 'bibliography', 'route_id', 'bibliography_id', 'bibtex');
+		$crud->set_relation_n_n('cites', 'bibliographic_citation', 'bibliography', 'route_id', 'bibliography_id', 'label');
 		$crud->field_type('id', 'hidden', $id);
 		$crud->unset_texteditor('geom_kml', 'description', 'citation');
 

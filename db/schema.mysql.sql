@@ -61,6 +61,7 @@ CREATE TABLE route_is_part_of (
 -- bibliography entry
 CREATE TABLE bibliography (
   id SERIAL PRIMARY KEY, -- id doesn't need to be stable in this case, just a DB key
+  label VARCHAR(255) NOT NULL,
   bibtex TEXT
 ) DEFAULT CHARSET=utf8;
 
