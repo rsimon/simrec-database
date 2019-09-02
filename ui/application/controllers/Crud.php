@@ -14,10 +14,13 @@ class Crud extends CI_Controller {
 	}
 
 	public function routes() {
+		$id = uniqid($more_entropy = true);
+
 		$crud = new grocery_CRUD();
 		$crud->set_table('route');
 		$crud->set_relation('route_type', 'route_type', 'id');
 		$crud->set_relation_n_n('cites', 'bibliographic_citation', 'bibliography', 'route_id', 'bibliography_id', 'bibtex');
+		$crud->field_type('id', 'hidden', $id);
 
 		$output = $crud->render();
 		$data['title'] = 'Routes';

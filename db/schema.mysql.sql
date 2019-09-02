@@ -33,11 +33,11 @@ CREATE TABLE network_edge (
   id VARCHAR(255) NOT NULL PRIMARY KEY, -- random string/number?
   route_id VARCHAR(255) NOT NULL,
   from_place VARCHAR(1024) NOT NULL,
-  to_place VARCHAR(1024) NOT NULL,
+  to_place VARCHAR(1024),
   notes TEXT,
-  FOREIGN KEY(route_id) REFERENCES route(id),
-  FOREIGN KEY(from_place) REFERENCES place(gazetteer_uri),
-  FOREIGN KEY(to_place) REFERENCES place(gazetteer_uri)
+  FOREIGN KEY(route_id) REFERENCES route(id) ON DELETE CASCADE,
+  FOREIGN KEY(from_place) REFERENCES place(gazetteer_uri) ON DELETE CASCADE,
+  FOREIGN KEY(to_place) REFERENCES place(gazetteer_uri) ON DELETE CASCADE
 ) DEFAULT CHARSET=utf8;
 
 -- named route, made up of many route instances
@@ -69,6 +69,6 @@ CREATE TABLE bibliographic_citation (
   route_id VARCHAR(255) NOT NULL,
   bibliography_id BIGINT UNSIGNED NOT NULL,
   UNIQUE KEY idx_bibliographic_citation (route_id, bibliography_id),
-  FOREIGN KEY(route_id) REFERENCES route(id),
-  FOREIGN KEY(bibliography_id) REFERENCES bibliography(id)
+  FOREIGN KEY(route_id) REFERENCES route(id) ON DELETE CASCADE,
+  FOREIGN KEY(bibliography_id) REFERENCES bibliography(id) ON DELETE CASCADE
 ) DEFAULT CHARSET=utf8;
