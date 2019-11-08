@@ -9,18 +9,31 @@ class Crud extends CI_Controller {
 		$this->load->library('grocery_CRUD');
 	}
 
+	// Callback functions for ID auto-generation
+	function generate_id($post_array) {
+		$random_id = uniqid($more_entropy = true);
+		$post_array['id'] = $random_id;
+		return $post_array;
+	}
+
+	function generate_place_id($post_array) {
+		$random_id = uniqid($more_entropy = true);
+		$post_array['internal_place_id'] = $random_id;
+		return $post_array;
+	}
+
 	public function index() {
 		$this->load->view('welcome_message');
 	}
 
 	public function routes() {
-		$id = uniqid($more_entropy = true);
-
 		$crud = new grocery_CRUD();
+
+		$crud->callback_before_insert(array($this, 'generate_id'));
+
 		$crud->set_table('route');
 		$crud->set_relation('route_type', 'route_type', 'id');
 		$crud->set_relation_n_n('cites', 'bibliographic_citation', 'bibliography', 'route_id', 'bibliography_id', 'label');
-		$crud->field_type('id', 'hidden', $id);
 		$crud->unset_texteditor('geom_kml', 'description', 'citation');
 
 		$output = $crud->render();
@@ -31,11 +44,11 @@ class Crud extends CI_Controller {
 	}
 
 	public function places() {
-		$internal_id = uniqid($more_entropy = true);
-
 		$crud = new grocery_CRUD();
+
+		$crud->callback_before_insert(array($this, 'generate_place_id'));
+
 		$crud->set_table('place');
-		$crud->field_type('internal_place_id', 'hidden', $internal_id);
 		$crud->unset_texteditor('notes');
 
 		$output = $crud->render();
@@ -46,14 +59,14 @@ class Crud extends CI_Controller {
 	}
 
 	public function network() {
-		$id = uniqid($more_entropy = true);
-
 		$crud = new grocery_CRUD();
+
+		$crud->callback_before_insert(array($this, 'generate_id'));
+
 		$crud->set_table('network_edge');
 		$crud->set_relation('route_id', 'route', 'id');
 		$crud->set_relation('from_place', 'place', 'name');
 		$crud->set_relation('to_place', 'place', 'name');
-		$crud->field_type('id', 'hidden', $id);
 		$crud->unset_texteditor('notes');
 
 		$output = $crud->render();
@@ -64,12 +77,12 @@ class Crud extends CI_Controller {
 	}
 
 	public function named_routes() {
-		$id = uniqid($more_entropy = true);
-		
 		$crud = new grocery_CRUD();
+		
+		$crud->callback_before_insert(array($this, 'generate_id'));
+
 		$crud->set_table('named_route');
 		$crud->set_relation_n_n('has_routes', 'route_is_part_of', 'route', 'named_route_id', 'route_id', 'description');
-		$crud->field_type('id', 'hidden', $id);
 		$crud->unset_texteditor('notes');
 
 		$output = $crud->render();
