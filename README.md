@@ -13,6 +13,7 @@ clone the repository and:
 
 ## TODOs  & Questions
 
+- [ ] auto-add bbox fields to routes, so we can do geo-retrieval (without the need for full-blown spatial data types)
 - [x] What should we use as identifiers for __routes__, __network edges__ and __named routes__? I'm not a fan of 
   auto-generated serial integers. UUIDs? Random alphanumeric strings?
 - [x] GroceryCRUD has problems with using URIs as unique IDs (relevant for __places__). What to use instead? (A 
