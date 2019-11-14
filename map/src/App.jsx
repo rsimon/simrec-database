@@ -5,6 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 
 import MapPane from './map/MapPane';
+import TablePane from './table/TablePane';
 
 import './App.css';
 
@@ -16,19 +17,24 @@ export default class App extends Component {
 
   componentDidMount() {
     axios.get('/api/routes').then(response => {
-      this.setState({
-        routes: response.data.map(r => r.geom_kml)
-      });
+      this.setState({ routes: response.data });
     });
+  }
+
+  onClick = route => evt => {
+    console.log(route);
   }
 
   render() {
     return (
       <Grid container component="main">
         <CssBaseline />
-        <Grid item xs={false} sm={4} md={7} className="table-pane" />
+        <Grid item xs={false} sm={4} md={7} className="table-pane">
+          <TablePane routes={this.state.routes} onClick={this.onClick} />
+        </Grid>
+        
         <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-          <MapPane routes={this.state.routes} />
+          <MapPane routes={this.state.routes.map(r => r.geom_kml)} />
         </Grid>
       </Grid>
     )
