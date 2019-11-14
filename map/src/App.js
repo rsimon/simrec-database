@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Map, TileLayer, GeoJSON, Popup } from 'react-leaflet';
+import Button from '@material-ui/core/Button';
 
 import './App.css';
 
@@ -23,17 +24,19 @@ export default class App extends Component {
 
   render() {
     return (
-      <Map center={position} zoom={13}>
-        <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors" />
+      <div>
+        <Map center={position} zoom={13}>
+          <TileLayer
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors" />
 
-        { this.state.routes.map((route, idx) => 
-          <GeoJSON key={idx} data={route}>
-            <Popup>A pretty CSS3 popup.<br />Easily customizable.</Popup>
-          </GeoJSON>
-        )}        
-      </Map>
+          { this.state.routes.map((route, idx) => 
+            <GeoJSON key={idx} data={route}>
+              <Popup>A pretty CSS3 popup.<br />Easily customizable.</Popup>
+            </GeoJSON>
+          )}        
+        </Map>
+      </div>
     )
   }
 

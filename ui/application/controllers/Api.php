@@ -17,9 +17,10 @@ class Api extends CI_Controller {
 		$this->output->set_status_header(200)->set_content_type('application/json')->set_output(json_encode($query->result()));
 	}
 	
-	/** Temporary - for testing only **/
 	public function routes() {
 		$rows = $this->db->query('SELECT * FROM route')->result();
+
+		$opt_bbox = explode(',', $this->input->get('bbox'));
 
 		foreach($rows as $row) {
 			$geom = json_decode($row->geom_kml);
