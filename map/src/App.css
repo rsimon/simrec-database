@@ -7,10 +7,11 @@ html, body, #root {
 
 main {
   height:100%;
+  padding:30px;
 }
 
 .table-pane {
-  padding:30px;
+  padding-right:20px;
 }
 
 .leaflet-container {

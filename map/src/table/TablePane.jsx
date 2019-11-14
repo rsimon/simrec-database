@@ -9,7 +9,7 @@ import Paper from '@material-ui/core/Paper';
 const TablePane = props => {
 
   return (
-    <Paper>
+    <Paper elevation={3}>
       <Table aria-label="simple table">
         <TableHead>
           <TableRow>

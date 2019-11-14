@@ -33,7 +33,7 @@ export default class App extends Component {
           <TablePane routes={this.state.routes} onClick={this.onClick} />
         </Grid>
         
-        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={3}>
           <MapPane routes={this.state.routes.map(r => r.geom_kml)} />
         </Grid>
       </Grid>

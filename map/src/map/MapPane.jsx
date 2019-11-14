@@ -1,5 +1,6 @@
 import React from 'react'; 
 import { Map, TileLayer, GeoJSON, Popup } from 'react-leaflet';
+import Paper from '@material-ui/core/Paper';
 
 const MapPane = props => {
 
