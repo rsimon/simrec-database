@@ -12,7 +12,8 @@ import './App.css';
 export default class App extends Component {
 
   state = {
-    routes: []
+    routes: [],
+    selected: null
   }
 
   componentDidMount() {
@@ -22,7 +23,7 @@ export default class App extends Component {
   }
 
   onClick = route => evt => {
-    console.log(route);
+    this.setState({ selected: route.id });
   }
 
   render() {
@@ -34,7 +35,7 @@ export default class App extends Component {
         </Grid>
         
         <Grid item xs={12} sm={8} md={5} component={Paper} elevation={3}>
-          <MapPane routes={this.state.routes.map(r => r.geom_kml)} />
+          <MapPane routes={this.state.routes} selected={this.state.selected} />
         </Grid>
       </Grid>
     )
