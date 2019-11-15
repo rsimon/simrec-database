@@ -65,7 +65,7 @@ module.exports = function(webpackEnv) {
   // It requires a trailing slash, or the file assets will get an incorrect path.
   // In development, we always serve from the root. This makes config easier.
   const publicPath = isEnvProduction
-    ? paths.servedPath
+    ? '/assets/map/' // paths.servedPath
     : isEnvDevelopment && '/';
   // Some apps do not use client-side routing with pushState.
   // For these, "homepage" can be set to "." to enable relative asset paths.
@@ -524,7 +524,8 @@ module.exports = function(webpackEnv) {
           {},
           {
             inject: true,
-            template: paths.appHtml,
+            template: isEnvProduction ? path.join(paths.appHtml, 'prod.html') : path.join(paths.appHtml, 'dev.html'),
+            filename: isEnvProduction ? 'map.php' : 'index.html'
           },
           isEnvProduction
             ? {
