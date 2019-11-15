@@ -1,6 +1,6 @@
 import React from 'react';
 import { GeoJSON, Popup } from 'react-leaflet';
-import { CardContent, Typography } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 
 const ROUTE_STYLES = {
   PRIMARY:   _ => ({ weight: 5, color: 'rgb(0, 0, 0)' }),
