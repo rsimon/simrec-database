@@ -5,5 +5,7 @@ rm -rf ../ui/assets/map/
 rm ../ui/application/views/map.php
 
 echo "Copying files from /build folder"
-cp -r ./build/static ../ui/assets/map
+mkdir ../ui/assets/map
+cp -r ./build/js ../ui/assets/map/.
+cp -r ./build/css ../ui/assets/map/.
 cp ./build/map.php ../ui/application/views/.
