@@ -7,7 +7,7 @@ import Paper from '@material-ui/core/Paper';
 import MapPane from './map/MapPane';
 import TablePane from './table/TablePane';
 
-import './App.css';
+import './App.scss';
 
 export default class App extends Component {
 
