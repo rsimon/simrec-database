@@ -1,5 +1,5 @@
 import React from 'react'; 
-import { Map, TileLayer } from 'react-leaflet';
+import { LayersControl, Map, TileLayer } from 'react-leaflet';
 import { merge } from '@mapbox/geojson-merge';
 import Bounds from 'geojson-bounds';
 import SelectableRoute from './SelectableRoute';
@@ -11,9 +11,25 @@ const MapPane = props => {
 
   return (
     <Map bounds={bounds} onPopupClose={props.onSelect()}>
-      <TileLayer
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors" />
+      <LayersControl position="topright">
+        <LayersControl.BaseLayer checked name="Digital Atlas of the Roman Empire">
+          <TileLayer 
+              url="http://dare.ht.lu.se/tiles/imperium/{z}/{x}/{y}.png"
+              attribution="Tiles: <a href='http://imperium.ahlfeldt.se/'>DARE 2014</a>" />
+        </LayersControl.BaseLayer>
+
+        <LayersControl.BaseLayer name="Ancient World Mapping Center">
+          <TileLayer
+            url="http://a.tiles.mapbox.com/v3/isawnyu.map-knmctlkh/{z}/{x}/{y}.png"
+            attribution="Tiles &copy; <a href='http://mapbox.com/'>MapBox</a> | Tiles and Data &copy; 2013 <a href='http://www.awmc.unc.edu'>AWMC</a>" />
+        </LayersControl.BaseLayer>
+
+        <LayersControl.BaseLayer name="OpenStreetMap">
+          <TileLayer
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors" />
+        </LayersControl.BaseLayer>
+      </LayersControl>
 
       { props.routes.map(route => 
         <SelectableRoute 

@@ -3,8 +3,8 @@ import { GeoJSON, Popup } from 'react-leaflet';
 import { CardContent, Typography } from '@material-ui/core';
 
 const ROUTE_STYLES = {
-  PRIMARY:   _ => ({ weight: 5, color: 'rgb(204, 8, 8)' }),
-  SECONDARY: _ => ({ weight: 3, color: 'rgba(204, 8, 8, 0.65)' })
+  PRIMARY:   _ => ({ weight: 5, color: 'rgb(0, 0, 0)' }),
+  SECONDARY: _ => ({ weight: 3, color: 'rgba(0, 0, 0, 0.8)' })
 }
 
 const SelectableRoute = props => {
