@@ -5,9 +5,10 @@ import Bounds from 'geojson-bounds';
 import SelectableRoute from './SelectableRoute';
 
 const MapPane = props => {
+
   const e = Bounds.extent(merge(props.routes.map(r => r.geom_kml)));
   const bounds = isNaN(e[0]) ? [[-90, -80], [90, 80]] : [[ e[1], e[0] ], [ e[3], e[2] ]];
-
+  
   return (
     <Map bounds={bounds}>
       <TileLayer
@@ -15,7 +16,11 @@ const MapPane = props => {
         attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors" />
 
       { props.routes.map(route => 
-        <SelectableRoute key={route.id} data={route} selected={route.id == props.selected} />
+        <SelectableRoute 
+          key={route.id} 
+          selected={route.id === props.selected} 
+          onClick={props.onSelect(route)}
+          {...route} />
       )}        
     </Map>
   )

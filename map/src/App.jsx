@@ -22,7 +22,7 @@ export default class App extends Component {
     });
   }
 
-  onClick = route => _ => {
+  onSelectRoute = route => _ => {
     this.setState({ selected: route.id });
   }
 
@@ -31,11 +31,17 @@ export default class App extends Component {
       <Grid container component="main">
         <CssBaseline />
         <Grid item xs={7} className="table-pane">
-          <TablePane routes={this.state.routes} onClick={this.onClick} />
+          <TablePane 
+            routes={this.state.routes} 
+            selected={this.state.selected} 
+            onSelect={this.onSelectRoute} />
         </Grid>
         
         <Grid item xs={5} component={Paper} elevation={3}>
-          <MapPane routes={this.state.routes} selected={this.state.selected} />
+          <MapPane 
+            routes={this.state.routes} 
+            selected={this.state.selected}
+            onSelect={this.onSelectRoute} />
         </Grid>
       </Grid>
     )

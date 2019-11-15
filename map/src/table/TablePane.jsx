@@ -24,7 +24,12 @@ const TablePane = props => {
         </TableHead>
         <TableBody>
           { props.routes.map(route => 
-            <TableRow key={route.id} hover onClick={props.onClick(route)}>
+            <TableRow
+              hover
+              key={route.id}
+              onClick={props.onSelect(route)} 
+              selected={route.id === props.selected}>
+                
               <TableCell>{route.id}</TableCell>
               <TableCell>{route.description}</TableCell>
               <TableCell>{route.lower_date}</TableCell>
