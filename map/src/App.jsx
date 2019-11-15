@@ -23,7 +23,10 @@ export default class App extends Component {
   }
 
   onSelectRoute = route => _ => {
-    this.setState({ selected: route.id });
+    if (route)
+      this.setState({ selected: route.id });
+    else 
+      this.setState({ selected: null });
   }
 
   render() {
