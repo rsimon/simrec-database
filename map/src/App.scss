@@ -13,6 +13,16 @@ main {
 .table-pane {
   padding-right:20px;
 
+  .description, .edit-record {
+    white-space:nowrap;
+  }
+
+  .description {
+    max-width:300px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+
   .MuiButton-root {
     margin:0 2px;
   }

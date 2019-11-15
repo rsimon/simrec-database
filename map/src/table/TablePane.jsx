@@ -34,7 +34,7 @@ const TablePane = props => {
               onClick={props.onSelect(route)} 
               selected={route.id === props.selected}>
                 
-              <TableCell>{route.description}</TableCell>
+              <TableCell className="description">{route.description}</TableCell>
               <TableCell>{route.lower_date}</TableCell>
               <TableCell>{route.lower_date_error}</TableCell>
               <TableCell>{route.upper_date}</TableCell>
