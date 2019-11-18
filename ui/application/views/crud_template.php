@@ -88,5 +88,12 @@
     <div class="content">
         <?php echo $output; ?> 
     </div>
+
+    <div style="padding-left:30px;">
+      <?php
+        if (array_key_exists('link', $data)) 
+          echo "<a href='" . $data['link'] . "' style='font-weight:bold; font-size:17px;'>Go to map</a>"; 
+      ?>
+    </div>
   </body>
 </html>

@@ -38,6 +38,7 @@ class Crud extends CI_Controller {
 
 		$output = $crud->render();
 		$data['title'] = 'Routes';
+		$data['link'] = '/map';
 		$output->data = $data;
 
 		$this->load->view('crud_template.php', $output);
