@@ -69,6 +69,11 @@
       a:hover {
         text-decoration: underline;
       }
+
+      <?php
+        if ($data['title'] == 'Routes')
+          echo "td:nth-child(7) div { max-width:180px; overflow:hidden; text-overflow:ellipsis; }"
+      ?>
     </style>
   </head>
   <body>
