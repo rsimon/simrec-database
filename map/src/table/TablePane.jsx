@@ -17,6 +17,7 @@ const TablePane = props => {
       <Table aria-label="simple table">
         <TableHead>
           <TableRow>
+            <TableCell></TableCell>
             <TableCell>Description</TableCell>
             <TableCell>Lower Date</TableCell>
             <TableCell>Lower Date Error</TableCell>
@@ -34,6 +35,10 @@ const TablePane = props => {
               onClick={props.onSelect(route)} 
               selected={route.id === props.selected}>
                 
+              <TableCell 
+                className="no-geometry" title="This route has no geometry">{!route.geom_kml && <Icon>warning</Icon>}
+              </TableCell>
+
               <TableCell className="description">{route.description}</TableCell>
               <TableCell>{route.lower_date}</TableCell>
               <TableCell>{route.lower_date_error}</TableCell>

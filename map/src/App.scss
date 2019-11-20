@@ -13,6 +13,10 @@ main {
 .table-pane {
   padding-right:20px;
 
+  .no-geometry {
+    color:orange;
+  }
+
   .description, .edit-record {
     white-space:nowrap;
   }

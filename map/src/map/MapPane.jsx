@@ -6,7 +6,10 @@ import SelectableRoute from './SelectableRoute';
 
 const MapPane = props => {
 
-  const e = Bounds.extent(merge(props.routes.map(r => r.geom_kml)));
+  // Routes are not guaranteed to have geometry!
+  const routesWithGeometry = props.routes.filter(r => r.geom_kml);
+
+  const e = Bounds.extent(merge(routesWithGeometry.map(r => r.geom_kml)));
   const bounds = isNaN(e[0]) ? [[-90, -80], [90, 80]] : [[ e[1], e[0] ], [ e[3], e[2] ]];
 
   return (
