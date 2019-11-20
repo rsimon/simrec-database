@@ -18,6 +18,7 @@ CREATE TABLE route (
   geom_kml MEDIUMTEXT,
   description TEXT, 
   citation TEXT,
+  last_updated TIMESTAMP,
   FOREIGN KEY(route_type) REFERENCES route_type(id)
 ) DEFAULT CHARSET=utf8;
 
@@ -26,7 +27,8 @@ CREATE TABLE place (
   internal_place_id VARCHAR(255) NOT NULL PRIMARY KEY,
   gazetteer_uri VARCHAR(1024) NOT NULL UNIQUE, 
   name VARCHAR(1024) NOT NULL,
-  notes TEXT
+  notes TEXT,
+  last_updated TIMESTAMP
 ) DEFAULT CHARSET=utf8;
 
 -- network model
@@ -36,6 +38,7 @@ CREATE TABLE network_edge (
   from_place VARCHAR(1024) NOT NULL,
   to_place VARCHAR(1024),
   notes TEXT,
+  last_updated TIMESTAMP,
   FOREIGN KEY(route_id) REFERENCES route(id) ON DELETE CASCADE,
   FOREIGN KEY(from_place) REFERENCES place(internal_place_id) ON DELETE CASCADE,
   FOREIGN KEY(to_place) REFERENCES place(internal_place_id) ON DELETE CASCADE
@@ -45,7 +48,8 @@ CREATE TABLE network_edge (
 CREATE TABLE named_route (
   id VARCHAR(255) NOT NULL PRIMARY KEY,
   name VARCHAR(1024) NOT NULL,
-  notes TEXT
+  notes TEXT,
+  last_updated TIMESTAMP
 ) DEFAULT CHARSET=utf8;
 
 -- associates routes with named routes
