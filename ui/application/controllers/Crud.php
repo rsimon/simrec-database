@@ -12,12 +12,7 @@ class Crud extends CI_Controller {
 	// Callback functions for ID auto-generation
 	function generate_id($post_array) {
 		$random_id = uniqid($more_entropy = true);
-		$post_array['id'] = $random_id;
-
-		echo "<pre>";
-    print_r($post_array);
-		echo "</pre>";  
-		
+		$post_array['id'] = $random_id;		
 		return $post_array;
 	}
 
