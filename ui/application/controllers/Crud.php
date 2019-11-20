@@ -13,6 +13,11 @@ class Crud extends CI_Controller {
 	function generate_id($post_array) {
 		$random_id = uniqid($more_entropy = true);
 		$post_array['id'] = $random_id;
+
+		echo "<pre>";
+    print_r($post_array);
+		echo "</pre>";  
+		
 		return $post_array;
 	}
 
@@ -32,7 +37,10 @@ class Crud extends CI_Controller {
 		$crud->callback_before_insert(array($this, 'generate_id'));
 
 		$crud->set_table('route');
+		
 		$crud->field_type('id', 'invisible');
+		$crud->field_type('last_updated', 'invisible');
+
 		$crud->set_relation('route_type', 'route_type', 'id');
 		$crud->set_relation_n_n('cites', 'bibliographic_citation', 'bibliography', 'route_id', 'bibliography_id', 'label');
 		$crud->unset_texteditor('geom_kml', 'description', 'citation');
@@ -51,7 +59,10 @@ class Crud extends CI_Controller {
 		$crud->callback_before_insert(array($this, 'generate_place_id'));
 
 		$crud->set_table('place');
+
 		$crud->field_type('internal_place_id', 'invisible');
+		$crud->field_type('last_updated', 'invisible');
+
 		$crud->unset_texteditor('notes');
 
 		$output = $crud->render();
@@ -67,7 +78,10 @@ class Crud extends CI_Controller {
 		$crud->callback_before_insert(array($this, 'generate_id'));
 
 		$crud->set_table('network_edge');
+
 		$crud->field_type('id', 'invisible');
+		$crud->field_type('last_updated', 'invisible');
+
 		$crud->set_relation('route_id', 'route', 'id');
 		$crud->set_relation('from_place', 'place', 'name');
 		$crud->set_relation('to_place', 'place', 'name');
@@ -83,10 +97,12 @@ class Crud extends CI_Controller {
 	public function named_routes() {
 		$crud = new grocery_CRUD();
 		
+		$crud->set_table('named_route');
 		$crud->callback_before_insert(array($this, 'generate_id'));
 
-		$crud->set_table('named_route');
 		$crud->field_type('id', 'invisible');
+		$crud->field_type('last_updated', 'invisible');
+		
 		$crud->set_relation_n_n('has_routes', 'route_is_part_of', 'route', 'named_route_id', 'route_id', 'description');
 		$crud->unset_texteditor('notes');
 
