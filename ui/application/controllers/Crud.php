@@ -1,6 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+require_once(APPPATH.'../vendor/phayes/geophp/geoPHP.inc');
+
 class Crud extends CI_Controller {
 
 	function __construct() {
@@ -22,6 +24,28 @@ class Crud extends CI_Controller {
 		return $post_array;
 	}
 
+	// Callback function to fill bbox columns from GeoJSON
+	function add_bounds($post_array) {
+		$json = $post_array['geom_kml'];
+
+		if ($json) {
+			$geom = geoPHP::load($json, 'json');
+			$bbox = $geom->getBBox();
+			$post_array['min_lon'] = $bbox['minx'];
+			$post_array['min_lat'] = $bbox['miny'];
+			$post_array['max_lon'] = $bbox['maxx'];
+			$post_array['max_lat'] = $bbox['maxy'];
+		}
+
+		return $post_array;
+	}
+	
+	function add_id_and_bounds($post_array) {
+		$random_id = uniqid($more_entropy = true);
+		$post_array['id'] = $random_id;		
+		return $this->add_bounds($post_array);
+	}
+
 	public function index() {
 		$this->load->view('welcome_message');
 	}
@@ -29,11 +53,17 @@ class Crud extends CI_Controller {
 	public function routes() {
 		$crud = new grocery_CRUD();
 
-		$crud->callback_before_insert(array($this, 'generate_id'));
+		// $crud->callback_before_insert(array($this, 'generate_id'));
+		$crud->callback_before_insert(array($this, 'add_id_and_bounds'));
+		$crud->callback_before_update(array($this, 'add_bounds'));
 
 		$crud->set_table('route');
 		
 		$crud->field_type('id', 'invisible');
+		$crud->field_type('min_lon', 'invisible');
+		$crud->field_type('min_lat', 'invisible');
+		$crud->field_type('max_lon', 'invisible');
+		$crud->field_type('max_lat', 'invisible');
 		$crud->field_type('last_updated', 'invisible');
 
 		$crud->set_relation('route_type', 'route_type', 'id');
