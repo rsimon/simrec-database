@@ -58,6 +58,20 @@ class Crud extends CI_Controller {
 		$crud->callback_before_update(array($this, 'add_bounds'));
 
 		$crud->set_table('route');
+
+		$crud->columns([
+			'id', 
+			'lower_data',
+			'lower_date_error',
+			'upper_date',
+			'upper_date_error',
+			'route_type',
+			'geom_kml',
+			'description',
+			'citation',
+			'last_updated',
+			'cites'
+		]);
 		
 		$crud->field_type('id', 'invisible');
 		$crud->field_type('min_lon', 'invisible');
