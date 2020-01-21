@@ -17,7 +17,7 @@ const MapPane = props => {
       <LayersControl position="topright">
         <LayersControl.BaseLayer checked name="Digital Atlas of the Roman Empire">
           <TileLayer 
-              url="http://dare.ht.lu.se/tiles/imperium/{z}/{x}/{y}.png"
+              url="http://dh.gu.se/tiles/imperium/{z}/{x}/{y}.png"
               attribution="Tiles: <a href='http://imperium.ahlfeldt.se/'>DARE 2014</a>" />
         </LayersControl.BaseLayer>
 
